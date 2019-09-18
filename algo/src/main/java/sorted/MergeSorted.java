@@ -5,7 +5,7 @@ import org.junit.Test;
 import static until.ArrayUntil.printArray;
 
 /**
- * @ClassName MergeSort
+ * @ClassName MergeSorted
  * @Author bin
  * @Date 2019/9/17 下午7:22
  * @Decr TODO
@@ -34,7 +34,7 @@ import static until.ArrayUntil.printArray;
  * }
  * @Link TODO
  **/
-public class MergeSort {
+public class MergeSorted {
 
     @Test
     public void Test(){
