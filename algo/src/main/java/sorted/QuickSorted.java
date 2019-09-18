@@ -77,7 +77,6 @@ public class QuickSorted {
     public void test() {
         int[] array = {5, 4, 3, 2, 7, 4, 6};
         splitArray(array, 0, array.length - 1);
-        System.out.println(ArrayUntil.printArray(array));
     }
 
 
