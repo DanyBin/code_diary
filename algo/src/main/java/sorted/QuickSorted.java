@@ -54,9 +54,9 @@ public class QuickSorted {
         for (int j = low; j < high; j++) { //遍历数组-[未排序空间]
             //采用选择排序。添加到「排序空间」
             if (array[j] < pivot) {
-                if (i == j) { //当索引位置相同时,不变
+                if (i == j) { //不需交换。(此时是排序好)
                     i++;
-                } else {
+                } else {     //交换 - 当大于pivot时交换元素。
                     int value = array[j];
                     array[j] = array[i];
                     array[i++] = value;
