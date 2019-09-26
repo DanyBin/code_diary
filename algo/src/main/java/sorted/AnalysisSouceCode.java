@@ -9,6 +9,9 @@ import java.util.Arrays;
  * @Author bin
  * @Date 2019/9/26 下午5:05
  * @Decr TODO
+ *      附录-
+ *          https://www.jianshu.com/p/6d26d525bb96
+ *          http://www.voidcn.com/article/p-fqwgjgns-ys.html
  * @Link TODO
  **/
 public class AnalysisSouceCode {
@@ -484,6 +487,8 @@ public class AnalysisSouceCode {
             /*
              * Use the third of the five sorted elements as pivot.
              * This value is inexpensive approximation of the median.
+             *
+             * 在5个元素中取中值
              */
             int pivot = a[e3];
 
@@ -517,14 +522,14 @@ public class AnalysisSouceCode {
                     a[less] = ak;
                     ++less;
                 } else { // a[k] > pivot - Move a[k] to right part
-                    while (a[great] > pivot) {
+                    while (a[great] > pivot) {  //先找到右边最后一个比pivot小的值
                         --great;
                     }
                     if (a[great] < pivot) { // a[great] <= pivot
                         a[k] = a[less];
                         a[less] = a[great];
                         ++less;
-                    } else { // a[great] == pivot
+                    } else { // a[great] == pivot  - -  如果相等，中心区直接扩展
                         /*
                          * Even though a[great] equals to pivot, the
                          * assignment a[k] = pivot may be incorrect,
@@ -532,6 +537,8 @@ public class AnalysisSouceCode {
                          * zeros of different signs. Therefore in float
                          * and double sorting methods we have to use
                          * more accurate assignment a[k] = a[great].
+                         *
+                         *  这里因为是整型值，所以a[k] == a[less] == pivot;
                          */
                         a[k] = pivot;
                     }
@@ -544,6 +551,10 @@ public class AnalysisSouceCode {
              * Sort left and right parts recursively.
              * All elements from center part are equal
              * and, therefore, already sorted.
+             */
+             /*
+             * 左右两边还没有完全排序，所以递归解决
+             * 中心区只有一个值，不再需要排序
              */
             sort(a, left, less - 1, leftmost);
             sort(a, great + 1, right, false);
