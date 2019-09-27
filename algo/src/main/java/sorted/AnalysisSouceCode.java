@@ -43,7 +43,7 @@ public class AnalysisSouceCode {
     @Test
     public void  intFun(){
             //长度小于 < 47 时
-        int[] array = {7,6,5,4,3,1,2};
+        int[] array = {7,6,5,4,3,1,2,9,10,8};
         sort(array,0,array.length-1,null,0,0);
     }
 
@@ -198,81 +198,81 @@ public class AnalysisSouceCode {
 
         // Use insertion sort on tiny arrays
         //小数组使用插入排序
-        if (length < INSERTION_SORT_THRESHOLD) {
-            if (leftmost) {
-                /*
-                 * Traditional (without sentinel) insertion sort,
-                 * optimized for server VM, is used in case of
-                 * the leftmost part.
-                 */
-                /**
-                 * 经典的插入排序算法，不带哨兵。做了优化，在leftmost情况下使用
-                 */
-                for (int i = left, j = i; i < right; j = ++i) {
-                    int ai = a[i + 1];
-                    while (ai < a[j]) {
-                        a[j + 1] = a[j];
-                        if (j-- == left) {
-                            break;
-                        }
-                    }
-                    a[j + 1] = ai;
-                }
-            } else {
-                /*
-                 * Skip the longest ascending sequence.
-                 */
-                /**
-                 * 首先跨过开头的升序的部分
-                 */
-                do {
-                    if (left >= right) {
-                        return;
-                    }
-                } while (a[++left] >= a[left - 1]);
-
-                /*
-                 * Every element from adjoining part plays the role
-                 * of sentinel, therefore this allows us to avoid the
-                 * left range check on each iteration. Moreover, we use
-                 * the more optimized algorithm, so called pair insertion
-                 * sort, which is faster (in the context of Quicksort)
-                 * than traditional implementation of insertion sort.
-                 */
-                /**
-                 * 这里用到了成对插入排序方法，它比简单的插入排序算法效率要高一些
-                 * 因为这个分支执行的条件是左边是有元素的
-                 * 所以可以直接从left开始往前查找。
-                 */
-                for (int k = left; ++left <= right; k = ++left) {
-                    int a1 = a[k], a2 = a[left];
-
-                    //保证a1>=a2
-                    if (a1 < a2) {
-                        a2 = a1; a1 = a[left];
-                    }
-
-                    //先把两个数字中较大的那个移动到合适的位置
-                    while (a1 < a[--k]) {
-                        a[k + 2] = a[k]; //这里每次需要向左移动两个元素
-                    }
-                    a[++k + 1] = a1;
-
-                    //再把两个数字中较小的那个移动到合适的位置
-                    while (a2 < a[--k]) {
-                        a[k + 1] = a[k]; //这里每次需要向左移动一个元素
-                    }
-                    a[k + 1] = a2;
-                }
-                int last = a[right];
-
-                while (last < a[--right]) {
-                    a[right + 1] = a[right];
-                }
-                a[right + 1] = last;
-            }
-            return;
-        }
+//        if (length < INSERTION_SORT_THRESHOLD) {
+//            if (leftmost) {
+//                /*
+//                 * Traditional (without sentinel) insertion sort,
+//                 * optimized for server VM, is used in case of
+//                 * the leftmost part.
+//                 */
+//                /**
+//                 * 经典的插入排序算法，不带哨兵。做了优化，在leftmost情况下使用
+//                 */
+//                for (int i = left, j = i; i < right; j = ++i) {
+//                    int ai = a[i + 1];
+//                    while (ai < a[j]) {
+//                        a[j + 1] = a[j];
+//                        if (j-- == left) {
+//                            break;
+//                        }
+//                    }
+//                    a[j + 1] = ai;
+//                }
+//            } else {
+//                /*
+//                 * Skip the longest ascending sequence.
+//                 */
+//                /**
+//                 * 首先跨过开头的升序的部分
+//                 */
+//                do {
+//                    if (left >= right) {
+//                        return;
+//                    }
+//                } while (a[++left] >= a[left - 1]);
+//
+//                /*
+//                 * Every element from adjoining part plays the role
+//                 * of sentinel, therefore this allows us to avoid the
+//                 * left range check on each iteration. Moreover, we use
+//                 * the more optimized algorithm, so called pair insertion
+//                 * sort, which is faster (in the context of Quicksort)
+//                 * than traditional implementation of insertion sort.
+//                 */
+//                /**
+//                 * 这里用到了成对插入排序方法，它比简单的插入排序算法效率要高一些
+//                 * 因为这个分支执行的条件是左边是有元素的
+//                 * 所以可以直接从left开始往前查找。
+//                 */
+//                for (int k = left; ++left <= right; k = ++left) {
+//                    int a1 = a[k], a2 = a[left];
+//
+//                    //保证a1>=a2
+//                    if (a1 < a2) {
+//                        a2 = a1; a1 = a[left];
+//                    }
+//
+//                    //先把两个数字中较大的那个移动到合适的位置
+//                    while (a1 < a[--k]) {
+//                        a[k + 2] = a[k]; //这里每次需要向左移动两个元素
+//                    }
+//                    a[++k + 1] = a1;
+//
+//                    //再把两个数字中较小的那个移动到合适的位置
+//                    while (a2 < a[--k]) {
+//                        a[k + 1] = a[k]; //这里每次需要向左移动一个元素
+//                    }
+//                    a[k + 1] = a2;
+//                }
+//                int last = a[right];
+//
+//                while (last < a[--right]) {
+//                    a[right + 1] = a[right];
+//                }
+//                a[right + 1] = last;
+//            }
+//            return;
+//        }
 
         // Inexpensive approximation of length / 7 - length / 7 的一种低复杂度的实现, 近似值(length * 9 / 64 + 1)
         int seventh = (length >> 3) + (length >> 6) + 1;
@@ -364,6 +364,7 @@ public class AnalysisSouceCode {
              *              all in (great, right) > pivot2
              *
              * Pointer k is the first index of ?-part.
+             * 遍历是 less<  K <great 之间的数据。寻找小于pivot1 并交换位置。或者 大于pivot2 ，交换位置。 其他无变化
              */
             outer:
             for (int k = less - 1; ++k <= great; ) {
@@ -404,9 +405,10 @@ public class AnalysisSouceCode {
             a[right] = a[great + 1]; a[great + 1] = pivot2;
 
             // Sort left and right parts recursively, excluding known pivots
-            // 把左边和右边递归排序，跟普通的快速排序差不多
+            //递归调用-  把左边和右边递归排序，跟普通的快速排序差不多
             sort(a, left, less - 2, leftmost);
             sort(a, great + 2, right, false);
+
 
             /*
              * If center part is too large (comprises > 4/7 of the array),
