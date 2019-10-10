@@ -143,6 +143,11 @@ public class SpecialBinarySearch {
 
     /**
      * 对于循环有序数组，查找"值等于给定值"
+     *  思路-
+     *      1. 获取「中间值」，判断 「给定值」是否 == 「中间值」/「最小值」/「最大值」. （将有序数组划分成两个数组。 low -> mid  与 mid -> high）
+     *      2. 因为是循环有序的数组，
+     *              当n[low] < n[mid]时，则是有序数组，判断「中间值」是否处于 low ->mid 之间 。处于在 high更新，否则low更新（值在mid -> high之间）
+     *              否则n[low]>n[mid]时，则是循环有序数组，判断「中间值」是否处理mid -> high之间。处于则更新low ,否则更新high
      * @param arr
      * @param value
      */
