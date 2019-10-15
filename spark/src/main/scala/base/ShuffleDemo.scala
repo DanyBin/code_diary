@@ -1,6 +1,7 @@
 package base
 
 import org.apache.spark.{SparkConf, SparkContext}
+import org.apache.log4j._
 
 /**
   * 验证shuffles对应性能影响
@@ -9,6 +10,7 @@ import org.apache.spark.{SparkConf, SparkContext}
   */
 
 object ShuffleDemo {
+  Logger.getLogger("org.apache.spark.SparkContext").setLevel(Level.WARN)
 
   def main(args: Array[String]): Unit = {
     //数据
@@ -46,6 +48,7 @@ object ShuffleDemo {
     val resultTuple = purRDD.map(m => (m.customerId, (1, m.price)))
       .reduceByKey((v1, v2) => (v1._1 + v2._1, v1._2 + v2._2))
       .collect()
+
 
     println(s"方案2,总耗时:${(System.currentTimeMillis() - s2)}")
     resultTuple.foreach(p => println(s"ID=${p._1} 次数${p._2._1} 总花费${p._2._2}"))

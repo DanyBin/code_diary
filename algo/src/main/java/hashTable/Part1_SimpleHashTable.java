@@ -4,7 +4,7 @@ import org.junit.Test;
 import until.ArrayUntil;
 
 /**
- * @ClassName SimpleHashTable
+ * @ClassName Part1_SimpleHashTable
  * @Author bin
  * @Date 2019/10/14 下午7:33
  * @Decr TODO
@@ -39,7 +39,7 @@ import until.ArrayUntil;
  *
  * @Link TODO
  **/
-public class SimpleHashTable {
+public class Part1_SimpleHashTable {
     int[] array;
 
     @Test
