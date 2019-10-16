@@ -17,12 +17,12 @@ object ShuffleDemo {
     var purchase = List(CFFPurchase(100, "jiao", 22.25),
       CFFPurchase(200, "wang", 42.12),
       CFFPurchase(300, "li", 44.25),
-      CFFPurchase(100, "le", 100.25),
-      CFFPurchase(200, "lin", 10.25),
-      CFFPurchase(100, "zhang", 22.25),
-      CFFPurchase(300, "shan", 120.25),
-      CFFPurchase(100, "jia", 22.25),
-      CFFPurchase(200, "ma", 22.25))
+      CFFPurchase(400, "le", 100.25),
+      CFFPurchase(500, "lin", 10.25),
+      CFFPurchase(600, "zhang", 22.25),
+      CFFPurchase(900, "shan", 120.25),
+      CFFPurchase(1100, "jia", 22.25),
+      CFFPurchase(2200, "ma", 22.25))
 
     val conf = new SparkConf().setAppName("shuffeDemo").setMaster("local")
     val sc = new SparkContext(conf)
@@ -56,4 +56,3 @@ object ShuffleDemo {
 
 }
 
-case class CFFPurchase(customerId: Int, name: String, price: Double)
