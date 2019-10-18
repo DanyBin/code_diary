@@ -1,10 +1,9 @@
 package base
 
-import org.apache.spark.rdd.RDD
 import org.apache.spark.{RangePartitioner, SparkConf, SparkContext}
 
 /**
-  *  验证分区(partitons的使用)
+  * 验证分区(partitons的使用)
   */
 
 object PartitionDemo {
@@ -27,12 +26,12 @@ object PartitionDemo {
     val rdd = sc.parallelize(purchase)
 
     val s = System.currentTimeMillis()
-    val pair = rdd.map(p => (p.customerId,(1,p.price)))
+    val pair = rdd.map(p => (p.customerId, (1, p.price)))
     //显示调用分区函数&缓存
-    val rangePair = new RangePartitioner(8,pair)
+    val rangePair = new RangePartitioner(8, pair)
     val partitioned = pair.partitionBy(rangePair).persist()
 
-    val resultTuple = partitioned.map(p =>p).reduceByKey((v1,v2) => (v1._1 + v2._1,v1._2+v2._2)).toDebugString
+    val resultTuple = partitioned.map(p => p).reduceByKey((v1, v2) => (v1._1 + v2._1, v1._2 + v2._2)).toDebugString
 
     println(s"分区方案,总耗时:${(System.currentTimeMillis() - s)}")
     println(resultTuple)

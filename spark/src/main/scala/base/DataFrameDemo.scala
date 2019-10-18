@@ -26,5 +26,9 @@ object DataFrameDemo {
 
     //获取订阅了但是没有地点信息的顾客。 左连接
     aboesDF.join(locsDF,aboesDF("id") === locsDF("id"),"left_outer").show()
+
+
+    import org.apache.spark.sql.functions._
+    locsDF.groupBy($"v").agg(sum($"id")).orderBy($"id".desc).show()
   }
 }
