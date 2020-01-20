@@ -13,6 +13,9 @@
     <modules>
         <module>algo</module>
         <module>spark</module>
+        <module>concurrent</module>
+        <module>elasticSearch</module>
+        <module>flink</module>
     </modules>
 
     <properties>
@@ -26,6 +29,12 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>28.2-jre</version>
+        </dependency>
+
     </dependencies>
 
 </project>
