@@ -16,6 +16,7 @@
         <module>concurrent</module>
         <module>elasticSearch</module>
         <module>flink</module>
+        <module>consul</module>
     </modules>
 
     <properties>

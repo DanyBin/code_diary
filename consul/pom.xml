@@ -9,7 +9,27 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>concurrent</artifactId>
+    <artifactId>consul</artifactId>
+
+
+    <properties>
+        <consul.version>1.4.0</consul.version>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.orbitz.consul</groupId>
+            <artifactId>consul-client</artifactId>
+            <version>${consul.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -24,4 +44,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
