@@ -24,7 +24,7 @@ public class CountDownDemo {
         for(int i=0;i < 1000;i ++){
 
             //线程同步工具类
-            CountDownLatch countDownLatch = new CountDownLatch(2);
+            CountDownLatch countDownLatch = new CountDownLatch(1);
 
             executorService.execute(()->{
                 x1++;

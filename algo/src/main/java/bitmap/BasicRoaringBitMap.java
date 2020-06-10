@@ -96,7 +96,6 @@ public class BasicRoaringBitMap {
         r1.add(8);
         r1.and(r2);
 
-        r1.contains()
         System.out.println("and 操作-> 交集"+r1.toString());
 
         System.out.println("contain -> "+r1.contains(9));

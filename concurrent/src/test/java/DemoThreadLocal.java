@@ -15,6 +15,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class DemoThreadLocal {
 
 
+
+
     //给每个线程分配一个原子ID
     private static final AtomicInteger nextId = new AtomicInteger(0);
 
@@ -35,10 +37,10 @@ public class DemoThreadLocal {
     public void thread() throws InterruptedException{
 
         ExecutorService executorService = Executors.newFixedThreadPool(10);
-
         for(int i=0;i< 1000;i++){
             executorService.submit(()->{
                 System.out.println(String.format("thread-name: %s thread-id: %s" ,Thread.currentThread().getName(),get()));
+                /*Thread.setDefaultUncaughtExceptionHandler();*/
             });
         }
         executorService.shutdown();

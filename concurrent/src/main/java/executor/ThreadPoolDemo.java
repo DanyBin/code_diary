@@ -59,6 +59,7 @@ public class ThreadPoolDemo {
                    take.run();
                } catch (InterruptedException e) {
                    e.printStackTrace();
+                   Thread.setDefaultUncaughtExceptionHandler(new UEHLogger());
                }
            }
         }

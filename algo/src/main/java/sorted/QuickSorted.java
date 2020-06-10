@@ -33,7 +33,10 @@ public class QuickSorted {
             return;
         }
         System.out.println("分割索引" + low + ' ' + high);
-        int partition = partition(array, low, high);    //下一个分区点
+        //下一个分区点
+        int partition = partition(array, low, high);
+        System.out.println("基准p=" + partition + ", 排序后-" + ArrayUntil.printArray(array));
+
         splitArray(array, low, partition - 1);
         splitArray(array, partition + 1, high);
 
@@ -48,34 +51,56 @@ public class QuickSorted {
      * @param high  最大索引
      */
     public static int partition(int[] array, int low, int high) {
-        int pivot = array[high]; //默认分割点
-        System.out.println("未排序前-" + ArrayUntil.printArray(array));
-        int i = low;
-        for (int j = low; j < high; j++) { //遍历数组-[未排序空间]
-            //采用选择排序。添加到「排序空间」
-            if (array[j] < pivot) {
-                if (i == j) { //不需交换。(此时是排序好)
-                    i++;
-                } else {     //交换 - 当大于pivot时交换元素。
-                    int value = array[j];
-                    array[j] = array[i];
-                    array[i++] = value;
-                }
+        // 基准必须是在左边小右边大的那个位置才行，不是随机找。
+        int p = high;
+        // 基准位置为 low=high 的位置
+        while (low != high) {
+            while (array[low] <= array[p] && low < high) {
+                low++;
+            }
+            while (array[high] >= array[p] && low < high) {
+                high--;
+            }
+            if (low != high) {
+                int value = array[high];
+                array[high] = array[low];
+                array[low] = value;
             }
         }
+        // 基准位
+        int value = array[p];
+        array[p] = array[high];
+        array[high] = value;
+        p = high;
+        return p;
+//        int pivot = array[high]; //默认分割点
+//        System.out.println("未排序前-" + ArrayUntil.printArray(array));
+//        int i = low;
+//        for (int j = low; j < high; j++) { //遍历数组-[未排序空间]
+//            //采用选择排序。添加到「排序空间」
+//            if (array[j] < pivot) {
+//                if (i == j) { //不需交换。(此时是排序好)
+//                    i++;
+//                } else {     //交换 - 当大于pivot时交换元素。
+//                    int value = array[j];
+//                    array[j] = array[i];
+//                    array[i++] = value;
+//                }
+//            }
+//        }
+//
+//        //交换数据，将分割点排序
+//        int value = array[high];
+//        array[high] = array[i];
+//        array[i] = value;
+//        System.out.println("排序后-" + ArrayUntil.printArray(array));
 
-        //交换数据，将分割点排序
-        int value = array[high];
-        array[high] = array[i];
-        array[i] = value;
-        System.out.println("排序后-" + ArrayUntil.printArray(array));
-
-        return i;
+//        return i;
     }
 
     @Test
     public void test() {
-        int[] array = {5, 4, 3, 2, 7, 4, 6};
+        int[] array = {6, 1, 2, 7, 9, 3, 4, 5, 10, 8};
         splitArray(array, 0, array.length - 1);
     }
 
