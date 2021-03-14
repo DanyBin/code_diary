@@ -1,5 +1,7 @@
 package generics.exception;
 
+import java.util.List;
+
 /**
  * @ClassName Proccessor
  * @Author bin
@@ -7,5 +9,8 @@ package generics.exception;
  * @Decr TODO
  * @Link TODO
  **/
-public class Proccessor {
+public interface Proccessor<T,E extends  Exception> {
+    void proccess(List<T> resultCollector) throws E;
 }
+
+

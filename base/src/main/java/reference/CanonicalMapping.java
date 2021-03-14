@@ -1,5 +1,7 @@
 package reference;
 
+import java.util.WeakHashMap;
+
 /**
  * @ClassName CanonicalMapping
  * @Author bin
@@ -8,4 +10,21 @@ package reference;
  * @Link TODO
  **/
 public class CanonicalMapping {
+    public static void main(String[] args) {
+        int size = 1000;
+        Key[] keys = new Key[size];
+        WeakHashMap<Key,Value> map = new WeakHashMap<Key, Value>();
+
+        for(int i=0; i<size;i ++) {
+            Key key = new Key("key"+i);
+            Value value = new Value("value"+i);
+
+            if(i%3 == 0){
+                keys[i] = key;
+            }
+            map.put(key,value);
+        }
+        System.gc();
+        System.out.println(map);
+    }
 }

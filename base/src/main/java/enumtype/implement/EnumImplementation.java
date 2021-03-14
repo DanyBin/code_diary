@@ -1,5 +1,7 @@
 package enumtype.implement;
 
+import generics.Generator;
+
 /**
  * @ClassName EnumImplementation
  * @Author bin
@@ -8,4 +10,14 @@ package enumtype.implement;
  * @Link TODO
  **/
 public class EnumImplementation {
-}
+    public static <T> void printNext(Generator<T> rg) {
+        System.out.println(rg.next() + ",");
+    }
+
+    public static void main(String[] args) {
+        CartoonCharacter cc = CartoonCharacter.PUNCHY;
+        for(int i=0 ;i < 10;i++){
+            printNext(cc);
+        }
+    }
+ }

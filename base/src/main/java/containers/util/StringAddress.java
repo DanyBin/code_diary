@@ -1,4 +1,4 @@
-package containers;
+package containers.util;
 
 /**
  * @ClassName StringAddress

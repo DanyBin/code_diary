@@ -1,5 +1,9 @@
 package containers;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
 /**
  * @ClassName Synchronization
  * @Author bin
@@ -8,4 +12,7 @@ package containers;
  * @Link TODO
  **/
 public class Synchronization {
+    public static void main(String[] args) {
+        Collection<String> c = Collections.synchronizedCollection(new ArrayList<String>());
+    }
 }

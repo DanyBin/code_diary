@@ -1,5 +1,8 @@
 package io.file;
 
+import java.io.File;
+import java.util.Arrays;
+
 /**
  * @ClassName DirList
  * @Author bin
@@ -8,4 +11,12 @@ package io.file;
  * @Link TODO
  **/
 public class DirList {
+    public static void main(String[] args) {
+        File path = new File(".");
+        String[] list = path.list();
+        Arrays.sort(list,String.CASE_INSENSITIVE_ORDER);
+        for(String dirItem : list){
+            System.out.println(dirItem);
+        }
+    }
 }

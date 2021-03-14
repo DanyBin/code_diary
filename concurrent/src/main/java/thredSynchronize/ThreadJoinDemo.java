@@ -26,6 +26,7 @@ public class ThreadJoinDemo {
 
             t2.start();
 
+
             //线程同步
             t1.join();
             t2.join();

@@ -1,5 +1,7 @@
 package io.serialization;
 
+import java.io.Serializable;
+
 /**
  * @ClassName Data
  * @Author bin
@@ -7,5 +9,10 @@ package io.serialization;
  * @Decr TODO
  * @Link TODO
  **/
-public class Data {
+public class Data implements Serializable {
+    private int n;
+    public Data(int n) {this.n = n;}
+    @Override
+    public String toString(){return Integer.toString(n);}
 }
+

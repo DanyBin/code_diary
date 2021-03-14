@@ -1,4 +1,5 @@
 package generics.functional;
 
-public interface UnaryPredicate {
+public interface UnaryPredicate<T> {
+    boolean test(T x);
 }

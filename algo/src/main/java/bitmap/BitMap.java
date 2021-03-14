@@ -25,6 +25,7 @@ public class BitMap {
     private int nbits;
 
     public BitMap(int nbits){
+
         this.nbits = nbits;
 
         //将int转换成char字节
@@ -117,9 +118,9 @@ public class BitMap {
          */
 
 
-        int a = 5;
+        int a = 5;System.out.println(Integer.toBinaryString(a));//结果是1
         a &= 3;
-        System.out.println(a);//结果是1
+        System.out.println(Integer.toBinaryString(a));//结果是1
 
     }
 }

@@ -1,5 +1,7 @@
 package concurrency.blockingQueue;
 
+import java.util.concurrent.LinkedBlockingQueue;
+
 /**
  * @ClassName ToastQueue
  * @Author bin
@@ -7,5 +9,4 @@ package concurrency.blockingQueue;
  * @Decr TODO
  * @Link TODO
  **/
-public class ToastQueue {
-}
+public class ToastQueue extends LinkedBlockingQueue<Toast> {}

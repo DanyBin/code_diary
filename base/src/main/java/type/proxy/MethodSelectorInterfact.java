@@ -7,5 +7,8 @@ package type.proxy;
  * @Decr TODO
  * @Link TODO
  **/
-public class MethodSelectorInterfact {
+interface MethodSelectorInterfact {
+    void boring();
+    void boring1();
+    void boring2();
 }

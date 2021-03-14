@@ -7,5 +7,10 @@ package concurrency.daemon;
  * @Decr TODO
  * @Link TODO
  **/
-public class DaemonSpawn {
+public class DaemonSpawn implements Runnable {
+    public void run() {
+        while (true){
+            Thread.yield();
+        }
+    }
 }

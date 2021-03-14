@@ -1,5 +1,7 @@
 package annotation.database;
 
+import java.lang.annotation.Target;
+
 /**
  * @ClassName Uniqueness
  * @Author bin
@@ -7,5 +9,7 @@ package annotation.database;
  * @Decr TODO
  * @Link TODO
  **/
-public class Uniqueness {
+public @interface Uniqueness {
+    //修改默认值
+    Constraints constraints() default @Constraints(unique = true);
 }

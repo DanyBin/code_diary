@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @ClassName BDTable
+ * @ClassName DBTable
  * @Author bin
  * @Date 2020/8/6 上午11:41
  * @Decr TODO
@@ -15,6 +15,6 @@ import java.lang.annotation.Target;
  **/
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface BDTable {
+public @interface DBTable {
     public String name() default  "";
 }

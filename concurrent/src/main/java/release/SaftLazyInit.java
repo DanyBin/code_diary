@@ -1,5 +1,7 @@
 package release;
 
+import javax.annotation.concurrent.ThreadSafe;
+
 /**
  * @ClassName SaftLazyInit
  * @Author bin
@@ -7,5 +9,15 @@ package release;
  * @Decr TODO
  * @Link TODO
  **/
+@ThreadSafe
 public class SaftLazyInit {
+
+    private static SaftLazyInit saftLazyInit;
+
+    public synchronized static SaftLazyInit getInstance(){
+        if(saftLazyInit == null){
+            saftLazyInit = new SaftLazyInit();
+        }
+        return saftLazyInit;
+    }
 }

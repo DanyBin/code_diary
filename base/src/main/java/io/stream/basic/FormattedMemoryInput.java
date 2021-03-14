@@ -1,4 +1,4 @@
-package io.stream;
+package io.stream.basic;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;

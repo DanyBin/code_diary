@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<people>
+    <person>
+        <first>a</first>
+        <last>b</last>
+    </person>
+    <person>
+        <first>c</first>
+        <last>d</last>
+    </person>
+</people>

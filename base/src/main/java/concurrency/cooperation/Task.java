@@ -7,5 +7,9 @@ package concurrency.cooperation;
  * @Decr TODO
  * @Link TODO
  **/
-public class Task {
+public class Task implements Runnable {
+    static Blocker blocker = new Blocker();
+    public void run() {
+        blocker.waitingCall();
+    }
 }

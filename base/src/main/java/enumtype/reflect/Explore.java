@@ -7,5 +7,6 @@ package enumtype.reflect;
  * @Decr TODO
  * @Link TODO
  **/
-public class Explore {
+public enum  Explore {
+    HERE,THERE
 }

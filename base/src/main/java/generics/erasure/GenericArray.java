@@ -1,10 +1,11 @@
-package generics;
+package generics.erasure;
 
 /**
  * @ClassName GenericArray
  * @Author bin
  * @Date 2020/7/9 下午2:52
  * @Decr TODO
+ *  类型擦拭验证
  * @Link TODO
  **/
 public class GenericArray<T> {

@@ -3,13 +3,13 @@ package type.proxy;
 import java.lang.reflect.Proxy;
 
 /**
- * @ClassName SimpleDynamicProxy
+ * @ClassName DynamicProxySimple
  * @Author bin
  * @Date 2020/7/8 上午11:14
  * @Decr TODO
  * @Link TODO
  **/
-public class SimpleDynamicProxy {
+public class DynamicProxySimple {
     public static void consumer(Interface iface){
         iface.doSomething();
         iface.doSomethingEles("sss");

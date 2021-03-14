@@ -5,7 +5,9 @@ package generics.functional;
  * @Author bin
  * @Date 2020/7/14 上午11:06
  * @Decr TODO
+ *      合并接口
  * @Link TODO
  **/
-public class Combiner {
+public interface Combiner<T> {
+    T combine(T x,T y);
 }

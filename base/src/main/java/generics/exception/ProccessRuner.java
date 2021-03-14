@@ -1,5 +1,8 @@
 package generics.exception;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @ClassName ProccessRuner
  * @Author bin
@@ -7,5 +10,13 @@ package generics.exception;
  * @Decr TODO
  * @Link TODO
  **/
-public class ProccessRuner {
+public class ProccessRuner<T,E extends Exception> extends ArrayList<Proccessor<T,E>> {
+
+    List<T> processAll() throws E {
+        ArrayList<T> resultCollector = new ArrayList<T>();
+        for(Proccessor<T,E> proccessor:this){
+            proccessor.proccess(resultCollector);
+        }
+        return resultCollector;
+    }
 }

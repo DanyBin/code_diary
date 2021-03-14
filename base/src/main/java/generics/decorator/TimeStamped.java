@@ -1,5 +1,7 @@
 package generics.decorator;
 
+import java.util.Date;
+
 /**
  * @ClassName TimeStamped
  * @Author bin
@@ -7,5 +9,12 @@ package generics.decorator;
  * @Decr TODO
  * @Link TODO
  **/
-public class TimeStamped {
+public class TimeStamped extends Decorator {
+    private final long timeStamp;
+
+    public TimeStamped(Basic basic) {
+        super(basic);
+        timeStamp = System.currentTimeMillis();
+    }
+    public long getStamp(){return timeStamp;}
 }

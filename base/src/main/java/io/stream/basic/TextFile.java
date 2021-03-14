@@ -1,4 +1,4 @@
-package io.stream.pipe;
+package io.stream.basic;
 
 import java.io.*;
 import java.util.ArrayList;

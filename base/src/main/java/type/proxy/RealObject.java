@@ -7,5 +7,11 @@ package type.proxy;
  * @Decr TODO
  * @Link TODO
  **/
-public class RealObject {
+public class RealObject implements Interface{
+    public void doSomething() {
+        System.out.println("doSomething");
+    }
+    public void doSomethingEles(String args) {
+        System.out.println("somethingElse " + args);
+    }
 }

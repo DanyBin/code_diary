@@ -1,5 +1,10 @@
 package annotation.database;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
 /**
  * @ClassName SQLInteger
  * @Author bin
@@ -7,5 +12,9 @@ package annotation.database;
  * @Decr TODO
  * @Link TODO
  **/
-public class SQLInteger {
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface SQLInteger {
+    String name() default "";
+    Constraints constraints() default @Constraints;
 }

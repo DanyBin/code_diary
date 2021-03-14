@@ -7,5 +7,15 @@ package concurrency.share;
  * @Decr TODO
  * @Link TODO
  **/
-public class EvenGenerator {
+public class EvenGenerator extends IntGenerator {
+    private int currentEventValue = 0 ;
+    public int next() {
+        ++ currentEventValue;
+        ++ currentEventValue;
+        return currentEventValue;
+    }
+
+    public static void main(String[] args) {
+        EvenChecker.test(new EvenGenerator());
+    }
 }

@@ -1,4 +1,8 @@
-package generics.Store;
+package generics.store;
+
+import generics.Generators;
+
+import java.util.ArrayList;
 
 /**
  * @ClassName Shelf
@@ -7,5 +11,8 @@ package generics.Store;
  * @Decr TODO
  * @Link TODO
  **/
-public class Shelf {
+public class Shelf extends ArrayList<Product> {
+    public Shelf(int nProduct){
+        Generators.fill(this,Product.generator,nProduct);
+    }
 }

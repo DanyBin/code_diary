@@ -7,5 +7,6 @@ package generics.functional;
  * @Decr TODO
  * @Link TODO
  **/
-public class UnaryFunction {
+public interface UnaryFunction<R,T> {
+    R function(T x);
 }

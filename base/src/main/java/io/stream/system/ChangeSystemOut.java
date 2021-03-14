@@ -1,5 +1,7 @@
 package io.stream.system;
 
+import java.io.PrintWriter;
+
 /**
  * @ClassName ChangeSystemOut
  * @Author bin
@@ -8,4 +10,8 @@ package io.stream.system;
  * @Link TODO
  **/
 public class ChangeSystemOut {
+    public static void main(String[] args) {
+        PrintWriter out = new PrintWriter(System.out,true);
+        out.println("tttt");
+    }
 }

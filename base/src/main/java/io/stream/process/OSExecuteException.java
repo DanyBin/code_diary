@@ -7,5 +7,9 @@ package io.stream.process;
  * @Decr TODO
  * @Link TODO
  **/
-public class OSExecuteException {
+public class OSExecuteException extends RuntimeException {
+
+    public OSExecuteException(String why) {
+        super(why);
+    }
 }

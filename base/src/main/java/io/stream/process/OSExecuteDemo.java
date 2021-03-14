@@ -8,4 +8,8 @@ package io.stream.process;
  * @Link TODO
  **/
 public class OSExecuteDemo {
+
+    public static void main(String[] args) {
+        OSExecute.command("javap OSExecuteDemo");
+    }
 }

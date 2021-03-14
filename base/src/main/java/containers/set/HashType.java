@@ -7,5 +7,8 @@ package containers.set;
  * @Decr TODO
  * @Link TODO
  **/
-public class HashType {
+public class HashType extends SetType {
+    public HashType(int n){super(n);}
+    @Override
+    public int hashCode(){return i;}
 }

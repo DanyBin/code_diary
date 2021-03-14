@@ -1,5 +1,8 @@
 package com.impl;
 
+import com.HelloService;
+import org.apache.thrift.TException;
+
 /**
  * @ClassName HelloServiceImpl
  * @Author bin
@@ -7,5 +10,9 @@ package com.impl;
  * @Decr TODO
  * @Link TODO
  **/
-public class HelloServiceImpl {
+public class HelloServiceImpl implements HelloService.Iface {
+    @Override
+    public String sayHello(String userName) throws TException {
+        return "hello " + userName + "!";
+    }
 }

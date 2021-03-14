@@ -1,5 +1,10 @@
 package annotation.unit;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
 /**
  * @ClassName TestProperty
  * @Author bin
@@ -7,5 +12,7 @@ package annotation.unit;
  * @Decr TODO
  * @Link TODO
  **/
-public class TestProperty {
+@Target({ElementType.FIELD,ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface TestProperty {
 }

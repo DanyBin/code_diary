@@ -7,5 +7,16 @@ package type.proxy;
  * @Decr TODO
  * @Link TODO
  **/
-public class MethodSelectorIng {
+public class MethodSelectorIng implements MethodSelectorInterfact {
+    public void boring() {
+        System.out.println(1);
+    }
+
+    public void boring1() {
+        System.out.println(2);
+    }
+
+    public void boring2() {
+        System.out.println(3);
+    }
 }

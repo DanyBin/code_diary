@@ -7,5 +7,5 @@ package generics.exception;
  * @Decr TODO
  * @Link TODO
  **/
-public class Failure2 {
+public class Failure2 extends Exception {
 }

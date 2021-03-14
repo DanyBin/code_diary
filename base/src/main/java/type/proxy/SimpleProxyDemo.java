@@ -8,4 +8,13 @@ package type.proxy;
  * @Link TODO
  **/
 public class SimpleProxyDemo {
+    public static void consumer(Interface interf){
+        interf.doSomething();
+        interf.doSomethingEles("ttt");
+    }
+
+    public static void main(String[] args) {
+        consumer(new RealObject());
+        consumer(new SimpleProxy(new RealObject()));
+    }
 }

@@ -8,4 +8,14 @@ package concurrency.interrupt;
  * @Link TODO
  **/
 public class NeedsCleanup {
+    private final int id;
+
+    public NeedsCleanup(int ident) {
+        id = ident;
+        System.out.println("NeedsCleanup :" + ident);
+    }
+
+    public void cleanup() {
+        System.out.println("Cleaning up : " + id);
+    }
 }

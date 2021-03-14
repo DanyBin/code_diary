@@ -7,5 +7,6 @@ package enumtype;
  * @Decr TODO
  * @Link TODO
  **/
-public class Shrubbery {
+public enum  Shrubbery {
+    GROUND, CRAWLING, HANGINT
 }

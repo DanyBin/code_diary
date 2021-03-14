@@ -7,5 +7,7 @@ package type.proxy;
  * @Decr TODO
  * @Link TODO
  **/
-public class Interface {
+interface Interface {
+    void doSomething();
+    void doSomethingEles(String args);
 }

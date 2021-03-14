@@ -24,8 +24,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ThreadPoolBasic {
 
 
-
-
     //工作线程
     class WorkThread implements Runnable{
 

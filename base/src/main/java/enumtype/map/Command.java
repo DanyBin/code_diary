@@ -7,5 +7,6 @@ package enumtype.map;
  * @Decr TODO
  * @Link TODO
  **/
-public class Command {
+public interface Command {
+    void action();
 }

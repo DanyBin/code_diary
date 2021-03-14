@@ -7,5 +7,8 @@ package reference;
  * @Decr TODO
  * @Link TODO
  **/
-public class Key {
+public class Key extends Element {
+    public Key(String id) {
+        super(id);
+    }
 }

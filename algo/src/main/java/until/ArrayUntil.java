@@ -21,4 +21,14 @@ public class ArrayUntil {
         }
        return builder.toString().substring(0,builder.toString().lastIndexOf(","));
     }
+
+    public static void main(String[] args) {
+        ArrayUntil arrayUntil = new ArrayUntil();
+        int type = -1;
+        arrayUntil.t(type);
+        System.out.println(type);
+    }
+    public void t (int type) {
+        type =5;
+    }
 }

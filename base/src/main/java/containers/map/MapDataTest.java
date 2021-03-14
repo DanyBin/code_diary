@@ -1,5 +1,7 @@
 package containers.map;
 
+import array.util.CountingGenerator;
+
 /**
  * @ClassName MapDataTest
  * @Author bin
@@ -8,4 +10,9 @@ package containers.map;
  * @Link TODO
  **/
 public class MapDataTest {
+    public static void main(String[] args) {
+        System.out.println(MapData.map(new Letters(),11));
+        System.out.println(MapData.map(new CountingGenerator.Character(),"aaa",5));
+        System.out.println(MapData.map(new Letters(),"a"));
+    }
 }

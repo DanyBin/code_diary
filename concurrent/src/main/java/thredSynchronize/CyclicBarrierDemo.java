@@ -17,7 +17,55 @@ public class CyclicBarrierDemo {
 
     static int x1=0,x2=0;
 
+
+    //创建一个Cyc实例，添加一个所有子线程全部到达屏障后执行的任务
+    private static CyclicBarrier cyclicBarrier = new CyclicBarrier(2, new Runnable() {
+        @Override
+        public void run() {
+            System.out.println(Thread.currentThread()  + " taks1 merger result");
+        }
+    });
+
     public static void main(String[] args){
+
+
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        //添加线程A到线程池
+        executorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    System.out.println(Thread.currentThread() + " task1-1");
+                    System.out.println(Thread.currentThread() + " enter in barrier");
+                    cyclicBarrier.await();
+                    System.out.println(Thread.currentThread() + " task1-1 enter out barrier");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (BrokenBarrierException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        //添加线程B到线程池
+        executorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    System.out.println(Thread.currentThread() + " task1-2");
+                    System.out.println(Thread.currentThread() + " enter in barrier");
+                    cyclicBarrier.await();
+                    System.out.println(Thread.currentThread() + " task1-2 enter out barrier");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (BrokenBarrierException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        executorService.shutdown();
+
+
 
         ExecutorService executor = Executors.newFixedThreadPool(1);
 

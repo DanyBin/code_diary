@@ -7,5 +7,15 @@ package concurrency.test;
  * @Decr TODO
  * @Link TODO
  **/
-public class BaseLine {
+public class BaseLine extends Accumulator {
+    {id = "BaseLine";}
+    public void accumulate() {
+        value += preLoaded[index++];
+        if(index > SIZE) index = 0;
+    }
+
+    public long read() {
+        return value;
+    }
+
 }

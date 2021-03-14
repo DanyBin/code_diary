@@ -1,5 +1,7 @@
 package concurrency.cooperation;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @ClassName WaxOff
  * @Author bin
@@ -7,5 +9,23 @@ package concurrency.cooperation;
  * @Decr TODO
  * @Link TODO
  **/
-public class WaxOff {
+public class WaxOff implements Runnable {
+
+    private Car car;
+
+    public WaxOff(Car c) {this.car = c;}
+    public void run() {
+        try {
+            while (!Thread.interrupted()) {
+                car.waitForWaxing();
+                System.out.println("Wax off");
+                TimeUnit.MILLISECONDS.sleep(200);
+                car.buffed();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("ending");
+    }
 }

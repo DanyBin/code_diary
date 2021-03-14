@@ -8,4 +8,10 @@ package containers.set;
  * @Link TODO
  **/
 public class SetType {
+    int i;
+    public SetType(int n){i=n;}
+    @Override
+    public boolean equals(Object o){
+        return o instanceof SetType && (i == ((SetType)o).i);
+    }
 }

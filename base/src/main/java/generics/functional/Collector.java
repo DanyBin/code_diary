@@ -7,5 +7,6 @@ package generics.functional;
  * @Decr TODO
  * @Link TODO
  **/
-public class Collector {
+public interface Collector<T> extends UnaryFunction<T,T>{
+    T result();
 }

@@ -1,4 +1,4 @@
-package io.stream;
+package io.stream.basic;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;

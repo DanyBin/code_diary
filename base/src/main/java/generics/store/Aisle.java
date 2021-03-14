@@ -1,4 +1,6 @@
-package generics.Store;
+package generics.store;
+
+import java.util.ArrayList;
 
 /**
  * @ClassName Aisle
@@ -7,5 +9,10 @@ package generics.Store;
  * @Decr TODO
  * @Link TODO
  **/
-public class Aisle {
+public class Aisle extends ArrayList<Shelf> {
+    public Aisle(int nShelf,int nProduct){
+        for(int i=0;i < nShelf ;i ++){
+            add(new Shelf(nProduct));
+        }
+    }
 }
