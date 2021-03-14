@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--设置debug级别-->
+<configuration status = "debug">
+    <!--设置配置信息-->
+    <Properties>
+        <Property name="path">/Users/bin/logs</Property>
+        <!--%d=日期
+            %t=当前线程名称
+            %p=日志级别
+            %c=类长度。Foo
+            %F=输出所在的类文件名，如Log4j2Test.java
+            %L=输出行号
+            %m=日志内容
+            %n=行分割符-->
+        <Property name="LOG_pattern">%d{yyyy/MM/dd HH:mm:ss.SSS} %t [%p] %c{1} (%F:%L) %m%n</Property>
+    </Properties>
+
+    <!--定义所有的Appender-->
+    <Appenders>
+        <!--输入日志到控制台-->
+        <Console name="console" target="SYSTEM_OUT" follow="true">
+
+            <!--大于Level级别，进行输出，否则不输出-->
+            <ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY"/>
+            <!--日志内容格式-->
+            <PatternLayout pattern="${LOG_pattern}"/>
+        </Console>
+
+        <!--
+            RollingFile=同步打印日志
+            RollingRandomAccessFile=异步打印日志
+            fileName=日志名称
+            filePattern=保存的日志格式名称
+        -->
+        <RollingFile name="info" fileName="${path}/info.log"
+                                 filePattern="${path}/info-%d{yyyy-MM-dd}.log">
+            <!--过滤日志级别-->
+            <LevelRangeFilter minLevel="INFO" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_pattern}"/>
+            <Policies>
+                <!--与filePattern连动
+                    filePattern=yyyy-MM-dd
+                    interval=1 按照一天分割
+                    modulate=true 立即创建新文件
+                -->
+                <TimeBasedTriggeringPolicy interval="1"  modulate="true"/>
+            </Policies>
+            <!--最大保留30天-->
+            <DefaultRolloverStrategy max="30"/>
+        </RollingFile>
+
+        <RollingFile name="warn" fileName="${path}/warn.log"
+                                 filePattern="${path}/warn-%d{yyyy-MM-dd}.log">
+            <!--过滤日志级别-->
+            <LevelRangeFilter minLevel="WARN" maxLevel="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_pattern}"/>
+            <Policies>
+                <!--与filePattern连动
+                    filePattern=yyyy-MM-dd
+                    interval=1 按照一天分割
+                    modulate=true 立即创建新文件
+                -->
+                <TimeBasedTriggeringPolicy interval="1"  modulate="true"/>
+            </Policies>
+            <!--最大保留30天-->
+            <DefaultRolloverStrategy max="30"/>
+        </RollingFile>
+
+        <RollingFile name="error" fileName="${path}/error.log"
+                                 filePattern="${path}/error-%d{yyyy-MM-dd}.log">
+            <!--过滤日志级别-->
+            <LevelRangeFilter minLevel="ERROR" maxLevel="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_pattern}"/>
+            <Policies>
+                <!--与filePattern连动
+                    filePattern=yyyy-MM-dd
+                    interval=1 按照一天分割
+                    modulate=true 立即创建新文件
+                -->
+                <TimeBasedTriggeringPolicy interval="1"  modulate="true"/>
+            </Policies>
+            <!--最大保留30天-->
+            <DefaultRolloverStrategy max="30"/>
+        </RollingFile>
+
+    </Appenders>
+
+    <!--配置-->
+    <Loggers>
+
+        <!--异步+同步Appper-->
+        <!--<AsyncLogger>-->
+
+        <!--</AsyncLogger>-->
+        <!--同步-->
+        <Root level="all">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="info"/>
+            <AppenderRef ref="warn"/>
+            <AppenderRef ref="error"/>
+        </Root>
+    </Loggers>
+</configuration>
