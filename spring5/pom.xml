@@ -78,4 +78,30 @@
         </dependency>
 
     </dependencies>
+
+    <build>
+        <!--指定资源-->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <!--指定打包方式-->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <compilerArgs>
+                        <!--设置Java编译器的执行参数 参考 https://groups.google.com/g/programmercafe/c/SuRRACj12LI?pli=1-->
+                        <arg>-Xlint:deprecation,unchecked</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+
+    </profiles>
 </project>
