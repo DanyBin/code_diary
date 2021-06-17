@@ -11,6 +11,13 @@
             <artifactId>javax.annotation-api</artifactId>
             <version>1.3.2</version>
         </dependency>
+
+        <!--打印对象头  https://www.cnblogs.com/LemonFive/p/11246086.html-->
+        <dependency>
+            <groupId>org.openjdk.jol</groupId>
+            <artifactId>jol-core</artifactId>
+            <version>0.8</version>
+        </dependency>
     </dependencies>
 
     <parent>

@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @Decr TODO
  *       创建基础的线程池使用
  *
- *       ThreadPoolExecutor(int corePoolSize,       -- 表示线程池保有的最小线程数
+ *       ThreadPoolExecutorDemo(int corePoolSize,       -- 表示线程池保有的最小线程数
                             int maximumPoolSize,    -- 表示线程池创建最大线程数
                             long keepAliveTime,     -- 表示空闲时间
                             TimeUnit unit,          -- keepAliveTime 的单位
@@ -71,7 +71,7 @@ public class ThreadPoolBasic {
         private int seconds;
         private boolean run=true;
 
-        monitorThread(ThreadPoolExecutor executor,int delay){
+        monitorThread(ThreadPoolExecutor executor, int delay){
             this.executor = executor;
             this.seconds = delay;
         }

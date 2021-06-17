@@ -21,7 +21,7 @@
         <Console name="console" target="SYSTEM_OUT" follow="true">
 
             <!--大于Level级别，进行输出，否则不输出-->
-            <ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY"/>
+            <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
             <!--日志内容格式-->
             <PatternLayout pattern="${LOG_pattern}"/>
         </Console>

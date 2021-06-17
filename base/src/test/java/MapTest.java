@@ -17,9 +17,22 @@ import java.util.Map;
 public class MapTest {
 
     private   static final int _1MB = 1024 * 1024;
+    private static final String MARK = "^";
+    private static final String MARK_1 = "\\^";
 
     public static void main(String[] args) {
-        sceneTest();
+        String s = "4^1616620964";
+        String s1= "5#134";
+        if (s.contains(MARK)) {
+            String[] split = s.split(MARK_1);
+            System.out.println(split[0]);
+        }
+
+        System.out.println(s1.split("#")[1]);
+
+
+
+        //sceneTest();
     }
     public static void sceneTest(){
        // int i = 53801035;

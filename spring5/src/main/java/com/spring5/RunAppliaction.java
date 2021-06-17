@@ -13,7 +13,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  **/
 @Slf4j
 public class RunAppliaction {
-
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
         TestBean testBean = (TestBean)context.getBean("testBean");
@@ -22,5 +21,7 @@ public class RunAppliaction {
         log.info("info 信息");
         log.warn("warn 信息");
         log.error("error 信息");
+        while (true){}
+
     }
 }

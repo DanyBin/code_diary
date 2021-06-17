@@ -25,6 +25,9 @@
         <module>base</module>
         <module>thrift</module>
         <module>spring5</module>
+        <module>redis</module>
+        <module>aviator</module>
+        <module>netty</module>
     </modules>
 
     <properties>
