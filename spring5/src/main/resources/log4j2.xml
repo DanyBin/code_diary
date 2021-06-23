@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--设置debug级别-->
-<configuration status = "debug">
+<configuration status = "info">
     <!--设置配置信息-->
     <Properties>
         <Property name="path">/Users/bin/logs</Property>

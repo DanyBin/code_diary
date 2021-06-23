@@ -10,6 +10,7 @@ import protocal.request.MessageRequestPacket;
 import protocal.response.LoginResponsePacket;
 import protocal.response.MessageResponsePacket;
 
+import java.nio.charset.Charset;
 import java.util.Date;
 
 public class FirstServerHandler extends ChannelInboundHandlerAdapter {
@@ -30,42 +31,46 @@ public class FirstServerHandler extends ChannelInboundHandlerAdapter {
    */
   @Override
   public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-    System.out.println("客户端开始登录....");
-    // 为什么 Netty 不直接把这个参数类型定义为 ByteBuf ？
-    ByteBuf byteBuf = (ByteBuf) msg;
+    ByteBuf buf = (ByteBuf) msg;
+    System.out.println(new Date() + " : 服务端读到数据 ->" + buf.toString(Charset.forName("utf-8")));
 
-    //解码
-    Packet decode = PacketCodeC.INSTANCE.decode(byteBuf);
-
-    LoginResponsePacket responsePacket = new LoginResponsePacket();
-
-    //判断是否请求数据包
-    if (decode instanceof LoginRequestPacket) {
-      LoginRequestPacket requestPacket = (LoginRequestPacket) decode;
-      responsePacket.setVersion(requestPacket.getVersion());
-      if (requestPacket.valid()) {
-        //校验成功
-        System.out.println("客户端登录成功");
-        responsePacket.setSuccess(true);
-      } else {
-        //校验失败
-        System.out.println("客户端登录失败");
-        responsePacket.setReason("账号密码校验失败");
-        responsePacket.setSuccess(false);
-      }
-      //写回数据
-      ByteBuf encode = PacketCodeC.INSTANCE.encode(ctx.alloc(),responsePacket);
-      ctx.channel().writeAndFlush(encode);
-    } else if (decode instanceof MessageRequestPacket) {
-      //处理信息
-      MessageRequestPacket requestPacket = (MessageRequestPacket)decode;
-      System.out.println(new Date() + ": 收到客户端信息：" + requestPacket.getMessage());
-
-      MessageResponsePacket messageResponsePacket = new MessageResponsePacket();
-      messageResponsePacket.setMessage("服务端回复【"+requestPacket.getMessage()+"】");
-      ByteBuf encode = PacketCodeC.INSTANCE.encode(ctx.alloc(), messageResponsePacket);
-      ctx.channel().writeAndFlush(encode);
-    }
+    //以下代码用于模拟用户登录行为
+//    System.out.println("客户端开始登录....");
+//    // 为什么 Netty 不直接把这个参数类型定义为 ByteBuf ？
+//    ByteBuf byteBuf = (ByteBuf) msg;
+//
+//    //解码
+//    Packet decode = PacketCodeC.INSTANCE.decode(byteBuf);
+//
+//    LoginResponsePacket responsePacket = new LoginResponsePacket();
+//
+//    //判断是否请求数据包
+//    if (decode instanceof LoginRequestPacket) {
+//      LoginRequestPacket requestPacket = (LoginRequestPacket) decode;
+//      responsePacket.setVersion(requestPacket.getVersion());
+//      if (requestPacket.valid()) {
+//        //校验成功
+//        System.out.println("客户端登录成功");
+//        responsePacket.setSuccess(true);
+//      } else {
+//        //校验失败
+//        System.out.println("客户端登录失败");
+//        responsePacket.setReason("账号密码校验失败");
+//        responsePacket.setSuccess(false);
+//      }
+//      //写回数据
+//      ByteBuf encode = PacketCodeC.INSTANCE.encode(ctx.alloc(),responsePacket);
+//      ctx.channel().writeAndFlush(encode);
+//    } else if (decode instanceof MessageRequestPacket) {
+//      //处理信息
+//      MessageRequestPacket requestPacket = (MessageRequestPacket)decode;
+//      System.out.println(new Date() + ": 收到客户端信息：" + requestPacket.getMessage());
+//
+//      MessageResponsePacket messageResponsePacket = new MessageResponsePacket();
+//      messageResponsePacket.setMessage("服务端回复【"+requestPacket.getMessage()+"】");
+//      ByteBuf encode = PacketCodeC.INSTANCE.encode(ctx.alloc(), messageResponsePacket);
+//      ctx.channel().writeAndFlush(encode);
+//    }
   }
 
 

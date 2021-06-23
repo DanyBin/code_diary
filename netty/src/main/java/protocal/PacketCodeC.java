@@ -27,8 +27,19 @@ public class PacketCodeC {
   }
 
   //魔数，用于校验
-  private static final int MAGIC_NUMBER = 0x12345678;
+  public static final int MAGIC_NUMBER = 0x12345678;
 
+  //将Java对象内的字段写到ByteBuf中
+  public void encode(ByteBuf buf,Packet packet) {
+    byte[] bytes = Serializer.DEFAULT.serialize(packet);
+    //3.实际编码过程
+    buf.writeInt(MAGIC_NUMBER);
+    buf.writeByte(packet.getVersion());
+    buf.writeByte(Serializer.DEFAULT.getSerializerAlgorithm());
+    buf.writeByte(packet.getCommand());
+    buf.writeInt(bytes.length);
+    buf.writeBytes(bytes);
+  }
   public ByteBuf encode(ByteBufAllocator alloc,Packet packet) {
     //1. 创建buf对象 -- ioBuffer() 方法会返回适配 io 读写相关的内存
     ByteBuf buf = alloc.ioBuffer();

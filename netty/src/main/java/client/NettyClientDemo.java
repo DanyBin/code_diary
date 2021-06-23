@@ -1,6 +1,10 @@
 package client;
 
 import client.adapter.FirstClientHandler;
+import client.handler.ClientLoginRequestHandler;
+import decoder.PacketDecoder;
+import decoder.PacketEncoder;
+import frame.Spliter;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
@@ -10,8 +14,10 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import protocal.PacketCodeC;
 import protocal.request.MessageRequestPacket;
+import server.handler.MessageRequestHandler;
 import utils.LoginUtil;
 
 import java.util.Date;
@@ -38,7 +44,17 @@ public class NettyClientDemo {
         .handler(new ChannelInitializer<SocketChannel>() {
           @Override
           protected void initChannel(SocketChannel socketChannel) throws Exception {
-            socketChannel.pipeline().addLast(new FirstClientHandler());
+            //socketChannel.pipeline().addLast(new FirstClientHandler());
+
+            //拆包器使用
+            socketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE,7,4));
+
+            //使用自定义的拆包
+            socketChannel.pipeline().addLast(new Spliter());
+            socketChannel.pipeline().addLast(new PacketDecoder());
+            socketChannel.pipeline().addLast(new ClientLoginRequestHandler());
+            socketChannel.pipeline().addLast(new MessageRequestHandler());
+            socketChannel.pipeline().addLast(new PacketEncoder());
           }
         });
 

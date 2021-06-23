@@ -1,15 +1,20 @@
 package server;
 
+import decoder.PacketDecoder;
+import decoder.PacketEncoder;
+import frame.Spliter;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.util.AttributeKey;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 import server.adapter.FirstServerHandler;
+import server.handler.*;
 
 import java.util.concurrent.ThreadFactory;
 
@@ -41,7 +46,28 @@ public class NettyServerDemo {
           @Override
           protected void initChannel(NioSocketChannel nioSocketChannel) throws Exception {
               //处理数据
-            nioSocketChannel.pipeline().addLast(new FirstServerHandler());
+           // nioSocketChannel.pipeline().addLast(new FirstServerHandler());
+//            //处理读数据的逻辑链
+//            nioSocketChannel.pipeline().addLast(new InBoundHandlerA());
+//            nioSocketChannel.pipeline().addLast(new InBoundHandlerB());
+//            nioSocketChannel.pipeline().addLast(new InBoundHandlerC());
+//
+//            //处理写数据的逻辑链
+//            nioSocketChannel.pipeline().addLast(new OutBoundHandlerA());
+//            nioSocketChannel.pipeline().addLast(new OutBoundHandlerB());
+//            nioSocketChannel.pipeline().addLast(new OutBoundHandlerC());
+//
+            //拆包器使用
+            //nioSocketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE,7,4));
+
+            nioSocketChannel.pipeline().addLast(new LifeCyCleTestHandler());
+
+            //使用自定义的拆包
+            nioSocketChannel.pipeline().addLast(new Spliter());
+            nioSocketChannel.pipeline().addLast(new PacketDecoder());
+            nioSocketChannel.pipeline().addLast(new LoginRequestHandler());
+            nioSocketChannel.pipeline().addLast(new MessageRequestHandler());
+            nioSocketChannel.pipeline().addLast(new PacketEncoder());
           }
         });
     bind(severBootstrap,8000);

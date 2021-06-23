@@ -29,7 +29,7 @@ public class LogonWithTransient implements Serializable{
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         String file = "/Users/bin/gitStudy/code_diary/base/src/main/resources/LogonWithTransient.out";
 
-        LogonWithTransient l1 = new LogonWithTransient("t","s");
+        LogonWithTransient l1 = new LogonWithTransient("exception","s");
         System.out.println(l1);
         ObjectOutputStream out =new ObjectOutputStream(new FileOutputStream(file));
         out.writeObject(l1);
