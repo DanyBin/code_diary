@@ -22,8 +22,6 @@ public class PacketCodeC {
     clMap.put(Command.LOGIN_RES ,LoginResponsePacket.class);
     clMap.put(Command.MESSAGE_REQUEST , MessageRequestPacket.class);
     clMap.put(Command.MESSAGE_RESPONSE , MessageResponsePacket.class);
-
-
   }
 
   //魔数，用于校验

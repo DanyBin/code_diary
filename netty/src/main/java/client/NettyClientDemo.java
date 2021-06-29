@@ -1,12 +1,13 @@
 package client;
 
-import client.adapter.FirstClientHandler;
-import client.handler.ClientLoginRequestHandler;
+import client.handler.AuthHandler;
+import client.handler.LoginRequestHandler;
+import client.handler.LoginRequestHandlerV2;
+import client.handler.MessageResponseHandlerV2;
 import decoder.PacketDecoder;
 import decoder.PacketEncoder;
 import frame.Spliter;
 import io.netty.bootstrap.Bootstrap;
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -15,10 +16,9 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
-import protocal.PacketCodeC;
+import protocal.request.LoginRequestPacket;
 import protocal.request.MessageRequestPacket;
-import server.handler.MessageRequestHandler;
-import utils.LoginUtil;
+import utils.SessionUtil;
 
 import java.util.Date;
 import java.util.Scanner;
@@ -52,13 +52,16 @@ public class NettyClientDemo {
             //使用自定义的拆包
             socketChannel.pipeline().addLast(new Spliter());
             socketChannel.pipeline().addLast(new PacketDecoder());
-            socketChannel.pipeline().addLast(new ClientLoginRequestHandler());
-            socketChannel.pipeline().addLast(new MessageRequestHandler());
+            socketChannel.pipeline().addLast(new LoginRequestHandlerV2());
+            socketChannel.pipeline().addLast(new MessageResponseHandlerV2());
+
+            //新增用户权限验证功能
+            socketChannel.pipeline().addLast(new AuthHandler());
             socketChannel.pipeline().addLast(new PacketEncoder());
           }
         });
 
-    connect(bootstrap, "127.0.0.1", 8000, MAX_RETRY);
+    connect(bootstrap, "127.0.0.1", 8080, MAX_RETRY);
   }
 
   private static void connect(Bootstrap bootstrap, String host, int port, int retry) {
@@ -90,20 +93,32 @@ public class NettyClientDemo {
 
   //console发生信息
   private static void startConsoleThread(Channel channel) {
+    Scanner sc = new Scanner(System.in);
+    LoginRequestPacket loginRequestPacket = new LoginRequestPacket();
+
     new Thread(() -> {
       //支持中断。不中断是死循环-阻塞式-发送信息
       while (!Thread.interrupted()) {
-        if (LoginUtil.hasLogin(channel)) {
-          System.out.println("输入消息发送至服务端: ");
-          Scanner sc = new Scanner(System.in);
-          String line = sc.nextLine();
-
-          MessageRequestPacket requestPacket = new MessageRequestPacket();
-          requestPacket.setMessage(line);
-          ByteBuf encode = PacketCodeC.INSTANCE.encode(channel.alloc(), requestPacket);
-          channel.writeAndFlush(encode);
+        if (!SessionUtil.hasLogin(channel)) {
+          System.out.print("输入用户名登录: ");
+          String userName = sc.nextLine();
+          loginRequestPacket.setUsername(userName);
+          loginRequestPacket.setPassword("pwd");
+          channel.writeAndFlush(loginRequestPacket);
+          waitForLoginResponse();
+        } else {
+          String toUserId = sc.next();
+          String message = sc.next();
+          channel.writeAndFlush(new MessageRequestPacket(toUserId, message));
         }
       }
     }).start();
+  }
+
+  private static void waitForLoginResponse() {
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException ignored) {
+    }
   }
 }

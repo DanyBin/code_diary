@@ -6,7 +6,7 @@ import protocal.response.MessageResponsePacket;
 
 import java.util.Date;
 
-public class ClientMessageHandler extends SimpleChannelInboundHandler<MessageResponsePacket> {
+public class MessageResponseHandler extends SimpleChannelInboundHandler<MessageResponsePacket> {
   @Override
   protected void channelRead0(ChannelHandlerContext channelHandlerContext, MessageResponsePacket responsePacket) throws Exception {
     System.out.println(new Date() + ": 收到服务端的信息：" + responsePacket.getMessage());

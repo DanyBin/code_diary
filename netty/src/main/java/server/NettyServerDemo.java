@@ -60,17 +60,17 @@ public class NettyServerDemo {
             //拆包器使用
             //nioSocketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE,7,4));
 
-            nioSocketChannel.pipeline().addLast(new LifeCyCleTestHandler());
+//            nioSocketChannel.pipeline().addLast(new LifeCyCleTestHandler());
 
             //使用自定义的拆包
             nioSocketChannel.pipeline().addLast(new Spliter());
             nioSocketChannel.pipeline().addLast(new PacketDecoder());
-            nioSocketChannel.pipeline().addLast(new LoginRequestHandler());
-            nioSocketChannel.pipeline().addLast(new MessageRequestHandler());
+            nioSocketChannel.pipeline().addLast(new LoginRequestHandlerV2());
+            nioSocketChannel.pipeline().addLast(new MessageRequestHandlerV2());
             nioSocketChannel.pipeline().addLast(new PacketEncoder());
           }
         });
-    bind(severBootstrap,8000);
+    bind(severBootstrap,8080);
   }
 
   //自动绑定递增端口的逻辑
