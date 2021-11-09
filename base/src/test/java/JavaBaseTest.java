@@ -18,15 +18,5 @@ public class JavaBaseTest {
 
     @org.junit.Test
     public void  test1(){
-
-        long start = System.currentTimeMillis();
-        int max = 10000000;
-        String[] str = new String[max];
-        int random = new Random().nextInt(max);
-        for (int i=0; i < max; i ++) {
-            str[i] = new String(String.valueOf(i*random));
-        }
-        new ReentrantLock();
-
     }
 }

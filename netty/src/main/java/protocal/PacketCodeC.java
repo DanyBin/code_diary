@@ -3,14 +3,15 @@ package protocal;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 import protocal.command.Command;
-import protocal.request.LoginRequestPacket;
-import protocal.request.MessageRequestPacket;
-import protocal.response.LoginResponsePacket;
-import protocal.response.MessageResponsePacket;
+import protocal.request.*;
+import protocal.response.*;
 import protocal.serializer.Serializer;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.ServiceLoader;
+import java.util.stream.Stream;
 
 public class PacketCodeC {
 
@@ -22,6 +23,14 @@ public class PacketCodeC {
     clMap.put(Command.LOGIN_RES ,LoginResponsePacket.class);
     clMap.put(Command.MESSAGE_REQUEST , MessageRequestPacket.class);
     clMap.put(Command.MESSAGE_RESPONSE , MessageResponsePacket.class);
+    clMap.put(Command.GROUP_REQUEST , CreateGroupRequestPacket.class);
+    clMap.put(Command.GROUP_RESPONSE , CreateGroupResponsePacket.class);
+    clMap.put(Command.JOIN_REQUEST , JoinGroupRequestPacket.class);
+    clMap.put(Command.JOIN_RESPONSE , JoinGroupResponsePacket.class);
+    clMap.put(Command.Quit_REQUEST , QuitGroupRequestPacket.class);
+    clMap.put(Command.Quit_RESPONSE , QuitGroupResponsePacket.class);
+    clMap.put(Command.GroupMembers_REQUEST , ListGroupMembersRequestPacket.class);
+    clMap.put(Command.GroupMembers_RESPONSE , ListGroupMembersResponsePacket.class);
   }
 
   //魔数，用于校验
@@ -95,5 +104,6 @@ public class PacketCodeC {
   private Class<? extends Packet> getRequestType(byte command) {
       return clMap.get(command);
   }
+
 
 }

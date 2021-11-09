@@ -28,6 +28,10 @@
         <module>redis</module>
         <module>aviator</module>
         <module>netty</module>
+        <module>Test</module>
+        <module>TwoHundred</module>
+        <module>ProcessAction</module>
+        <module>camel</module>
     </modules>
 
     <properties>

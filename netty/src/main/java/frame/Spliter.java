@@ -6,7 +6,7 @@ import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import protocal.PacketCodeC;
 
 /**
- * 自定义实现拆包
+ * 自定义实现拆包 - 判断魔数
  */
 public class Spliter extends LengthFieldBasedFrameDecoder {
 

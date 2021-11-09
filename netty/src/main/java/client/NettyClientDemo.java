@@ -1,9 +1,8 @@
 package client;
 
-import client.handler.AuthHandler;
-import client.handler.LoginRequestHandler;
-import client.handler.LoginRequestHandlerV2;
-import client.handler.MessageResponseHandlerV2;
+import client.console.ConsoleCommandManager;
+import client.console.impl.LoginConsoleCommand;
+import client.handler.*;
 import decoder.PacketDecoder;
 import decoder.PacketEncoder;
 import frame.Spliter;
@@ -54,6 +53,10 @@ public class NettyClientDemo {
             socketChannel.pipeline().addLast(new PacketDecoder());
             socketChannel.pipeline().addLast(new LoginRequestHandlerV2());
             socketChannel.pipeline().addLast(new MessageResponseHandlerV2());
+            socketChannel.pipeline().addLast(new CreateGroupResponseHandler());
+            socketChannel.pipeline().addLast(new JoinGroupResponseHandler());
+            socketChannel.pipeline().addLast(new QuitGroupResponseHandler());
+            socketChannel.pipeline().addLast(new ListGroupMembersResponseHandler());
 
             //新增用户权限验证功能
             socketChannel.pipeline().addLast(new AuthHandler());
@@ -71,7 +74,7 @@ public class NettyClientDemo {
 
         //todo 注意 通过该方法进行发送信息
         Channel channel = ((ChannelFuture) future).channel();
-        startConsoleThread(channel);
+        startConsoleThreadV2(channel);
 
       } else if (retry == 0) {
         System.out.println("连接失败");
@@ -95,7 +98,6 @@ public class NettyClientDemo {
   private static void startConsoleThread(Channel channel) {
     Scanner sc = new Scanner(System.in);
     LoginRequestPacket loginRequestPacket = new LoginRequestPacket();
-
     new Thread(() -> {
       //支持中断。不中断是死循环-阻塞式-发送信息
       while (!Thread.interrupted()) {
@@ -121,4 +123,21 @@ public class NettyClientDemo {
     } catch (InterruptedException ignored) {
     }
   }
+
+  private static void startConsoleThreadV2(Channel channel) {
+    ConsoleCommandManager consoleCommandManager = new ConsoleCommandManager();
+    LoginConsoleCommand loginConsoleCommand = new LoginConsoleCommand();
+    Scanner scanner = new Scanner(System.in);
+    new Thread(() -> {
+      while (!Thread.interrupted()) {
+        if (!SessionUtil.hasLogin(channel)) {
+          loginConsoleCommand.exec(scanner,channel);
+          waitForLoginResponse();
+        } else {
+          consoleCommandManager.exec(scanner,channel);
+        }
+      }
+    }).start();
+  }
+
 }

@@ -15,6 +15,8 @@ import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 import server.adapter.FirstServerHandler;
 import server.handler.*;
+import server.handler.packet.PacketCodecHandler;
+import server.handler.v2.IMIdleStateHandler;
 
 import java.util.concurrent.ThreadFactory;
 
@@ -62,12 +64,20 @@ public class NettyServerDemo {
 
 //            nioSocketChannel.pipeline().addLast(new LifeCyCleTestHandler());
 
+            nioSocketChannel.pipeline().addLast(new IMIdleStateHandler());
             //使用自定义的拆包
             nioSocketChannel.pipeline().addLast(new Spliter());
-            nioSocketChannel.pipeline().addLast(new PacketDecoder());
-            nioSocketChannel.pipeline().addLast(new LoginRequestHandlerV2());
+//            nioSocketChannel.pipeline().addLast(new PacketDecoder());
+            //使用下面Handler替代PacketDecoder 与 PacketEncoder
+            nioSocketChannel.pipeline().addLast(PacketCodecHandler.INSTANCE);
+            nioSocketChannel.pipeline().addLast(LoginRequestHandlerV2.INSTANCE);
             nioSocketChannel.pipeline().addLast(new MessageRequestHandlerV2());
-            nioSocketChannel.pipeline().addLast(new PacketEncoder());
+            nioSocketChannel.pipeline().addLast(new CreateGroupRequestHandler());
+            nioSocketChannel.pipeline().addLast(new JoinGroupRequestHandler());
+            nioSocketChannel.pipeline().addLast(new QuitGroupRequestHandler());
+            nioSocketChannel.pipeline().addLast(new ListGroupMembersRequestHandler());
+
+//            nioSocketChannel.pipeline().addLast(new PacketEncoder());
           }
         });
     bind(severBootstrap,8080);

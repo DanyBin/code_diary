@@ -1,6 +1,8 @@
 package client.console;
 
-import java.nio.channels.Channel;
+import client.console.impl.*;
+import io.netty.channel.Channel;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -11,8 +13,12 @@ public class ConsoleCommandManager implements ConsoleCommand {
 
   public ConsoleCommandManager() {
     consoleCommandMap = new HashMap<>();
-//    consoleCommandMap.put("sendToUser",);
-
+    consoleCommandMap.put("logout",new LogoutConsoleCommand());
+    consoleCommandMap.put("sendToUser",new SendToUserConsoleCommand());
+    consoleCommandMap.put("createGroup",new CreateGroupConsoleCommand());
+    consoleCommandMap.put("joinGroup", new JoinGroupConsoleCommand());
+    consoleCommandMap.put("listGroupMembers", new ListGroupMembersConsoleCommand());
+    consoleCommandMap.put("quitGroup", new QuitGroupConsoleCommand());
   }
   @Override
   public void exec(Scanner scanner, Channel channel) {

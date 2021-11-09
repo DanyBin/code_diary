@@ -1,6 +1,6 @@
 package client.console;
 
-import java.nio.channels.Channel;
+import io.netty.channel.Channel;
 import java.util.Scanner;
 
 public interface ConsoleCommand {

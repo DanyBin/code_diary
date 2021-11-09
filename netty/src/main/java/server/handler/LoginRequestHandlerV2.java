@@ -1,6 +1,7 @@
 package server.handler;
 
 import domain.Session;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import protocal.request.LoginRequestPacket;
@@ -13,8 +14,18 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 处理登录逻辑
+ * 1. 加上注解标识，表明该 handler 是可以多个 channel 共享的
  */
+@ChannelHandler.Sharable
 public class LoginRequestHandlerV2 extends SimpleChannelInboundHandler<LoginRequestPacket> {
+
+
+  // 2. 构造单例
+  public static final LoginRequestHandler INSTANCE = new LoginRequestHandler();
+
+  private LoginRequestHandlerV2() {
+
+  }
 
   @Override
   protected void channelRead0(ChannelHandlerContext ctx, LoginRequestPacket loginRequestPacket) throws Exception {
