@@ -1,3 +1,5 @@
+import com.google.common.collect.Lists;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -42,8 +44,9 @@ public class Code_32_PerfectSquares {
       level++;
       //遍历
       while (size-- > 0) {
-        //当前
+        //当前元素
         final Integer cur = queue.poll();
+        //遍历所有的平方数
         for (int s : squares) {
           int next = cur - s;
           if (next < 0) {
@@ -75,7 +78,9 @@ public class Code_32_PerfectSquares {
     int diff = 3;
     while (sqart <= n) {
       ret.add(sqart);
+      //递增的方式
       sqart += diff;
+      //增加 += 2
       diff += 2;
     }
     return ret;

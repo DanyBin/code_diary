@@ -10,6 +10,22 @@ public class Code_06_LinkedCycle {
     }
     //双指针
     ListNode l1 = head,l2 = head.next;
+
+    while (l1 != null && l2 != null && l2.next != null) {
+      if (l1 == l2) {
+        return true;
+      }
+      l1 = l1.next;
+      l2 = l2.next.next;
+    }
+    return false;
+  }
+
+  public boolean hasCycle2(ListNode head) {
+    if (null == head) {
+      return false;
+    }
+    ListNode l1 = head,l2 = head.next;
     while (l1 != null && l2 != null && l2.next != null) {
       if (l1 == l2) {
         return true;

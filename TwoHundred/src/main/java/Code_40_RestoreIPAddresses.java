@@ -53,7 +53,7 @@ public class Code_40_RestoreIPAddresses {
       return;
     }
 
-    //限制最大数量为3个元素
+    //限制最大数量为3个元素 -- 每次只获取元素的数量
     for (int i = 0; i < digits.length() && i <= 2 ; i ++) {
       //防止前一元素为0
       if (i != 0 && digits.charAt(i) == '0') {

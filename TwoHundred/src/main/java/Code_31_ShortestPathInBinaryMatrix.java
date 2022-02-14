@@ -34,9 +34,12 @@ public class Code_31_ShortestPathInBinaryMatrix {
 
     //八个方向
     int[][] direction = {{1,-1},{1,0},{1,1},{0,1},{0,0},{0,-1},{-1,1},{-1,0},{-1,-1}};
+    //存在节点
     Queue<Pair<Integer,Integer>> queue = new LinkedList<>();
     queue.add(Pair.of(0,0));
+    //路径长度
     int pathLength = 0;
+
     while (!queue.isEmpty()) {
       int size = queue.size();
       pathLength++;
@@ -59,7 +62,7 @@ public class Code_31_ShortestPathInBinaryMatrix {
 
         grids[left][right] = 1; //标记
 
-        //循环方向
+        //遍历的方式，记录当前节点，可以走的8个方式
         for (int[] d: direction) {
           int t1 = left + d[0];
           int t2 = right + d[1];

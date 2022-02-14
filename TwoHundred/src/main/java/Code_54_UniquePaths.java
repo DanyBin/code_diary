@@ -16,6 +16,10 @@ import java.util.Arrays;
  *
  */
 public class Code_54_UniquePaths {
+  public static void main(String[] args) {
+    final Code_54_UniquePaths paths = new Code_54_UniquePaths();
+    paths.uniquePaths(3,7);
+  }
   public int uniquePaths(int m,int n) {
     int[] dp = new int[n];
     Arrays.fill(dp,1);

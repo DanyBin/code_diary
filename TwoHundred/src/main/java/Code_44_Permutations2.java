@@ -38,7 +38,7 @@ public class Code_44_Permutations2 {
     }
 
     for (int i=0 ;i < nums.length ; i++) {
-      //过滤条件，防止重复
+      //过滤条件，防止重复  == 当前元素 != 前一个元素  && 前一个元素是没有被访问过的
       if (i !=0 && nums[i] == nums[i-1] && !visit[i-1]) {
         continue;
       }

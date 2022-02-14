@@ -46,20 +46,17 @@ import java.util.List;
 public class Code_14_QueueReconstructionByHeight {
 
   public int[][] reconstructQueue(int[][] people) {
-    //排序，
-    Arrays.sort(people, new Comparator<int[]>() {
-      @Override
-      public int compare(int[] o1, int[] o2) {
-        if (o1[0] != o2[0]) {
-          return o1[0] - o2[0];
-        } else {
-          return o2[1] - o1[1];
-        }
+    //不想等时，按照[0] 排序。 降序 相等时，按照升序[1]
+    Arrays.sort(people, (o1, o2) -> {
+      if (o1[0] != o2[0]) {
+        return o1[0] - o2[0];
+      } else {
+        return o2[1] - o1[1];
       }
     });
+
     List<int[]> queue = Lists.newArrayList();
-    for (int[] p : queue) {
-      //存放位置。按照K
+    for (int[] p : people) {
       queue.add(p[1],p);
     }
     return queue.toArray(new int[queue.size()][]);

@@ -16,6 +16,7 @@ public class Code_24_FindSmallestLetterGreaterThanTarget {
     int l = 0;
     int h = letters.length - 1;
     while (l <= h) {
+      //求中间值-- 双指针遍历的方式
       int mid = l + (h - l)/2;
       //判断 是否小于。注意边界情况
       if (letters[mid] <= target) {

@@ -15,7 +15,9 @@ public class Code_23_Sqrt {
     int l = 1;
     int h = x;
     while (l <= h) {
+      //获取中间值
       int m = l + (h-l)/2;
+      //求余数
       int sqrt = x / m ;
       if (sqrt == m) {
         return m;
@@ -23,6 +25,23 @@ public class Code_23_Sqrt {
         h = m - 1;
       } else {
         l = m + 1;
+      }
+    }
+    return h;
+  }
+
+  public int mySqrt2(int x) {
+    int l = 1;
+    int h = x;
+    while (l < h) {
+      int mid = l + (h -l)/2;
+      int sqrt = mid/x;
+      if (sqrt == mid) {
+        return mid;
+      } else if (sqrt > mid) {
+        h = mid - 1;
+      } else {
+        l = mid + 1;
       }
     }
     return h;

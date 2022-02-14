@@ -8,11 +8,5 @@ package let;
  * @Link TODO
  **/
 public class MyPow {
-    public int mypow(double x, int n){
-        if (x == 1 || n == 0) {
-            return 1;
-        }
 
-        if ()
-    }
 }

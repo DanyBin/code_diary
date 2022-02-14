@@ -11,7 +11,6 @@ public class Code_02_SumOfSquareNumber {
   public static void sumOfSquare(int input){
     int left = 0;
     int right = input - 1;
-
     while (left < right) {
       int sum = left*left + right*right;
       if (sum == input) {
@@ -24,4 +23,21 @@ public class Code_02_SumOfSquareNumber {
       }
     }
   }
+
+  public static void sumOfSquare2(int input) {
+    int left = 0;
+    int right = input - 1;
+    while (left < right) {
+      int sum = left * left + right * right;
+      if (sum == input) {
+        System.out.println(left + " " + right);
+        break;
+      } else if (sum > input) {
+        right --;
+      } else {
+        left ++;
+      }
+    }
+  }
+
 }

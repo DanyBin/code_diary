@@ -12,6 +12,7 @@ import java.util.List;
  * 输入：s = "a"
  * 输出：[["a"]]
  *
+ *  也是排列组合的问题
  */
 public class Code_51_PalindromePartitioning {
 

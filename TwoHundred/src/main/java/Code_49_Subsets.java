@@ -13,6 +13,7 @@ import java.util.List;
  * 输入：nums = [0]
  * 输出：[[],[0]]
  *
+ * 排列组合 -- 回溯的思想
  */
 public class Code_49_Subsets {
   private int[] nums;

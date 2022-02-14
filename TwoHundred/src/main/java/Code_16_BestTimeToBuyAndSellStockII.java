@@ -7,8 +7,10 @@
 public class Code_16_BestTimeToBuyAndSellStockII {
   public int maxProfit(int[] prices) {
     int profit = 0 ;
-    for (int i = 1 ;i < prices.length ; i++) {
+    for (int i = 1; i < prices.length; i++) {
+      //当前收益 > 之前的收益
       if (prices[i] > prices[i-1]) {
+        //计算具体的收益
         profit += prices[i] - prices[i-1];
       }
     }

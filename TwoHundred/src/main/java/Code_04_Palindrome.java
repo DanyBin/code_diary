@@ -6,6 +6,7 @@ public class Code_04_Palindrome {
     palindrome("abcba");
   }
   private static void palindrome(String target) {
+    //双指针
     int i=0;
     int j = target.length() - 1;
     while (i <= j) {
@@ -22,5 +23,7 @@ public class Code_04_Palindrome {
       i++;
       j--;
     }
+
+
   }
 }

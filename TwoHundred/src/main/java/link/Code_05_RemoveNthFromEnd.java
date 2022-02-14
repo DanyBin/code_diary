@@ -1,7 +1,5 @@
 package link;
 
-import javafx.beans.binding.When;
-
 /**
  *
  * 5. 删除链表的倒数第 n 个节点

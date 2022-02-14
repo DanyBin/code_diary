@@ -32,6 +32,7 @@ public class Code_50_SubsetsII {
     boolean[] visit = new boolean[nums.length];
     this.nums = nums;
     for (int i = 0; i <= nums.length; i ++) {
+      //Todo 每次dfs时，都是start = 0 的时候
       backTracking(ret,temp,0,i,visit);
     }
     return ret;
@@ -43,6 +44,7 @@ public class Code_50_SubsetsII {
       return;
     }
 
+    //注意是从start开始的
     for (int i = start; i < nums.length; i ++) {
       //防止重复元素
       if (i != 0 && nums[i] == nums[i - 1] && !visit[i - 1]) {

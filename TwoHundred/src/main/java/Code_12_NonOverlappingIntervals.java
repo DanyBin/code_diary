@@ -42,16 +42,18 @@ import java.util.Comparator;
 public class Code_12_NonOverlappingIntervals {
 
   public static int eraseOverlapIntervals(int[][] intervals) {
-    //先排序
-    Arrays.sort(intervals, Comparator.comparing(o -> o[1]));
+    //按照第一个元素排序
+    Arrays.sort(intervals,Comparator.comparing(o -> o[1]));
+    //计算重复值
     int cnt = 1;
     int end = intervals[0][1];
-    for (int i=1; i < intervals.length; i ++) {
-      //取第一个元素。校验大小。不算重叠
+
+    for (int i = 1; i < intervals.length ; i ++) {
+      //数据对比，按照第一个元素
       if (intervals[i][0] < end) {
         continue;
       }
-      //取第二个元素。赋值
+      //重新更新end
       end = intervals[i][1];
       cnt++;
     }

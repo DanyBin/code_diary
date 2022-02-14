@@ -54,7 +54,7 @@ public class Code_34_MaxAreaofIsland {
    * @return
    */
   public int dfs(int[][] grid, int r, int c) {
-    if (r >= n || c>= m || grid[r][c] == 0 || r < 0 || c < 0) {
+    if (r < 0 || c < 0 || r >= n || c>= m || grid[r][c] == 0) {
       return 0;
     }
 

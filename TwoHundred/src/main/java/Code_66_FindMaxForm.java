@@ -40,6 +40,7 @@ public class Code_66_FindMaxForm {
       for (int i = m; i >= zero; i --) {
         //处理n的背包
         for (int j = n; j >= one; j--) {
+          //比较大小
           dp[i][j] = Math.max(dp[i][j],dp[i-zero][j-one] + 1);
         }
       }

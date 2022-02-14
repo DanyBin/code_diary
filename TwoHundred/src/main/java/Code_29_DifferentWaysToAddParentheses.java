@@ -17,6 +17,12 @@ import java.util.List;
  */
 public class Code_29_DifferentWaysToAddParentheses {
 
+  public static void main(String[] args) {
+    final Code_29_DifferentWaysToAddParentheses ways = new Code_29_DifferentWaysToAddParentheses();
+    final List<Integer> integers = ways.diffWaysToCompute("2-1-1");
+    System.out.println(integers);
+  }
+
   private boolean isOp(char c) {
     return '+' == c || '-' == c || '*' == c;
   }

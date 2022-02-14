@@ -9,7 +9,7 @@ import java.util.List;
  * 输入：nums = [1,2,3]
  * 输出：[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
  *
- *
+ *  排列组合 - 使用回溯的思想
  */
 public class Code_43_Permutations {
   public static void main(String[] args) {
@@ -42,6 +42,7 @@ public class Code_43_Permutations {
       visit[i] = true;
       l.add(nums[i]);
       backtrack(nums,visit,l,ret);
+      //回溯的方式。删除之前的数据
       l.remove(l.size() - 1);
       visit[i] = false;
     }

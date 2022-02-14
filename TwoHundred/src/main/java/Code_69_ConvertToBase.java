@@ -19,7 +19,9 @@ public class Code_69_ConvertToBase {
     }
 
     while (num > 0) {
+      //余数
       sb.append(num % 7);
+      //除法取整
       num/= 7;
     }
     final String string = sb.reverse().toString();

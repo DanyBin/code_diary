@@ -19,10 +19,8 @@ public class Code_13_MinimumNumberOfArrowsToBurstBalloons {
     }
     //先排序
     Arrays.sort(points, Comparator.comparing(o -> o[1]));
-
     int cnt = 1;
     int end = points[0][1];
-
     for (int i=1; i < points.length ;i ++) {
       //算重叠的情况
       if (points[i][0] <= end) {

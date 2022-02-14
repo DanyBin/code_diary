@@ -8,13 +8,16 @@ public class Code_15_BestTimeToBuyAndSellStock {
     if (prices.length == 0) {
       return 0;
     }
+    //动态规划的解决方式
     int min = prices[0];
     int max = 0;
-    for (int i= 1 ;i < prices.length ; i ++) {
-      if (min > prices[i]){
+    for (int i = 1; i < prices.length ; i++) {
+      if (min > prices[i]) {
+        //更新变量
         min = prices[i];
       } else {
-        max = Math.max(max,prices[i] - min);
+        //更新变量
+        max = Math.max(max,prices[i]-min);
       }
     }
     return max;

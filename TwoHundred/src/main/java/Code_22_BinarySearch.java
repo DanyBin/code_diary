@@ -15,6 +15,7 @@ public class Code_22_BinarySearch {
     int l = 0;
     int h = nums.length - 1;
     while (l <= h) {
+      //获取中间指
       int m = l + (h - l)/2;
       if (nums[m] == key) {
         return m;
@@ -22,6 +23,22 @@ public class Code_22_BinarySearch {
         l = m + 1;
       } else {
         h = m - 1;
+      }
+    }
+    return -1;
+  }
+
+  public int binarySearch2(int[] nums,int key) {
+    int l = 0;
+    int h = nums.length - 1;
+    while (l < h) {
+      int mid = l + (h - l)/2;
+      if (nums[mid] == key) {
+        return mid;
+      } else if (nums[mid] > key) {
+        h  = mid - 1;
+      } else {
+        l = mid +1;
       }
     }
     return -1;

@@ -26,14 +26,16 @@ public class Code_56_ArithmeticSlices {
   public int numberOfArithmeticSlices(int[] nums) {
     int[] dp = new int[nums.length];
     for (int i= 2;i < nums.length ; i++) {
+      //3个元素时，是否为等差数列
       if (nums[i] - nums[i-1] == nums[i-1] - nums[i-2]) {
+        //状态变化
         dp[i] = dp[i-1] + 1;
       }
     }
 
     int cnt = 0;
     for (int k : dp) {
-      cnt+= k;
+      cnt += k;
     }
     return cnt;
   }

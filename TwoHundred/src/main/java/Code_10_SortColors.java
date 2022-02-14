@@ -5,16 +5,15 @@
 public class Code_10_SortColors {
   public int[] sortColors(int[] nums) {
     int zero = -1;
-    int one  = 0;
+    int one = 0;
     int two = 2;
     while (one < two) {
-      //比较大小，切分
       if (nums[one] == 0) {
         swap(nums,++zero,one++);
-      } else if (nums[one] == 2) {//比较大小，切分
+      } else if (nums[one] == 2) {
         swap(nums,--two,one);
       } else {
-        ++one;
+        ++ one;
       }
     }
     return nums;

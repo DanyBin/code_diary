@@ -18,10 +18,13 @@ public class Code_64_CanPartition {
       return false;
     }
     int W = sum / 2; //重量（容量）
+    //创建一个背包容量的数组
     int[] dp = new int[W+1];
     for (int i = 0; i< nums.length; i ++) {
+      //主要是遍历背包的大 -> 小
       for (int j = W; j >= nums[i]; j--) {
         //比较大小。dp[i - nums[i]] == 就是当前剩余的背包容量
+        //注意dp[j] 存储的值是 num[i] 的值
         dp[j] = Math.max(dp[j],dp[j-nums[i]] + nums[i]);
       }
     }

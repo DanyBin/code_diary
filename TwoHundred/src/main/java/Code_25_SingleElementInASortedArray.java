@@ -15,6 +15,11 @@
  */
 public class Code_25_SingleElementInASortedArray {
 
+  public static void main(String[] args) {
+    final Code_25_SingleElementInASortedArray code_25_singleElementInASortedArray = new Code_25_SingleElementInASortedArray();
+    final int i = code_25_singleElementInASortedArray.singleNonDuplicate(new int[]{1, 1, 2, 3, 3, 4, 4, 8, 8});
+    System.out.println(i);
+  }
   public int singleNonDuplicate(int[] nums) {
    int l = 0;
    int h = nums.length - 1;
@@ -24,10 +29,12 @@ public class Code_25_SingleElementInASortedArray {
      if (mid%2 == 1) {
        mid--; //保证为奇数
      }
-
+     //比较当前元素与 post的元素
      if (nums[mid] == nums[mid + 1]) {
+       //跳过两个元素
        l = mid + 2;
      } else {
+       //否则h = mid
        h = mid;
      }
    }

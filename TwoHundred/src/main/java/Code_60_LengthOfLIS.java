@@ -22,6 +22,7 @@ import java.util.Arrays;
 public class Code_60_LengthOfLIS {
   public int lengthOfLIS(int[] nums) {
     int[] dp = new int[nums.length + 1];
+    //初始化一个
     dp[0] = 1;
     int maxans = 1;
     for (int i = 1; i <= nums.length ; i++) {

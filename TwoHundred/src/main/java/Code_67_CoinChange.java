@@ -17,6 +17,7 @@ public class Code_67_CoinChange {
   public int coinChange(int[] coins,int amount) {
     int[] dp = new int[amount+1];
     for (int n : coins) {
+      //注意，重复背包时，背包的时由 小 -> 大
       for (int i = 0; i <= amount; i++) {
         if (i == n ) {
           dp[i] = 1;

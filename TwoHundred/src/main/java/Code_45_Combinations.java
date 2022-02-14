@@ -16,6 +16,8 @@ import java.util.List;
  *   [1,3],
  *   [1,4],
  * ]
+ *
+ * 排列组合 -- 使用回溯的思想
  */
 public class Code_45_Combinations {
 

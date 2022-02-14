@@ -9,7 +9,7 @@ package link;
  *
  * 返回一个由上述 k 部分组成的数组。
  *
- *  
+ *
  *
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/split-linked-list-in-parts

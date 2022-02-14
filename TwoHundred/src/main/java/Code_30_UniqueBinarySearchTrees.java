@@ -40,13 +40,19 @@ public class Code_30_UniqueBinarySearchTrees {
         return ret;
     }
     for (int i = s; i <= n; i++) {
+      //左子数 -- 0 - n 之间的
       final List<TreeNode> left = generateSubTrees(s, i - 1);
+      //右子数 -- n - length 之间的
       final List<TreeNode> right = generateSubTrees(i+1, n);
+      //遍历左子树
       for (TreeNode l : left) {
+        //遍历右子树
         for (TreeNode r : right) {
+          //创建当前节点
           final TreeNode treeNode = new TreeNode(i);
           treeNode.left = l;
           treeNode.right = r;
+          //节点保存
           ret.add(treeNode);
         }
       }

@@ -68,7 +68,7 @@ public class Code_38_PacificAtlanticWaterFlow {
       dfs(i,0,canReachA);
       dfs(i,n-1,canReachB);
     }
-
+    //边界条件
     for (int i = 0; i< n;i ++) {
       dfs(0,i,canReachA);
       dfs(m-1,i,canReachB);

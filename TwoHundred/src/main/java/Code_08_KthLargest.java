@@ -15,15 +15,14 @@ public class Code_08_KthLargest {
   }
   //堆
   public static int findKthLargestHeap(int[] nums, int k) {
-    //采用优先级的队列
     PriorityQueue<Integer> queue = new PriorityQueue<>();
     for (int val : nums) {
       queue.add(val);
-      if (queue.size() > k) { //当堆中元素的数量大于 k 时，移除堆顶元素，也就是当前堆中最大的元素
+      if (queue.size() > k) {
         queue.poll();
       }
     }
-    return queue.peek();
+    return queue.peek(); //头元素
   }
 
   public static int findKthLargestFast(int[] nums, int k) {

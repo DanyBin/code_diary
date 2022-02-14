@@ -14,7 +14,9 @@
 public class Code_19_NonDecreasingArray {
   public boolean checkPossibility(int[] nums) {
     int cnt = 0;
+    //z注意 i 从1开始  & cnt 要小于2 (终止条件)
     for (int i = 1; i < nums.length && cnt < 2; i++) {
+      //当元素 > 前一个位置的元素
       if (nums[i] >= nums[i-1]){
         continue;
       }
@@ -27,5 +29,21 @@ public class Code_19_NonDecreasingArray {
       }
     }
     return cnt <=1;
+  }
+
+  public boolean checkPossibility2(int[] nums) {
+    int cnt = 0;
+    for (int i = 1; i < nums.length && cnt < 2;i ++) {
+      if (nums[i] > nums[i-1]) {
+        continue;
+      }
+      cnt++;
+      if (i - 2 > 0 && nums[i-2] > nums[i]) {
+        nums[i] = nums[i-1];
+      } else {
+        nums[i-1] = nums[i];
+      }
+    }
+    return cnt <= 1;
   }
 }

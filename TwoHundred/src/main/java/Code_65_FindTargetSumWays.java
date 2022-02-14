@@ -51,6 +51,7 @@ public class Code_65_FindTargetSumWays {
     dp[0] = 1;
     for (int n : nums) {
       //逆序遍历 -- i ==W 从背包的重量开始
+      //这种都存储的是 0 与 1 这种。用来计算的
       for (int i = W; i >= n; i--) {
         dp[i] = dp[i] + dp[i-n];
       }
@@ -64,4 +65,6 @@ public class Code_65_FindTargetSumWays {
     }
     return sum;
   }
+
+
 }

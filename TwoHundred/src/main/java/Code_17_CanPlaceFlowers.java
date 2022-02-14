@@ -7,13 +7,13 @@ public class Code_17_CanPlaceFlowers {
   public boolean canPlaceFlowers(int[] flowerbed,int n) {
     int len = flowerbed.length;
     int cnt = 0;
-    for (int i=0; i< flowerbed.length ;i ++) {
+    for (int i =0; i < flowerbed.length; i++) {
       if (flowerbed[i] == 1) {
         continue;
       }
-
       int prev = i == 0 ? 0 : flowerbed[i-1];
       int next = i == len - 1 ? 0 : flowerbed[i+1];
+      //判断前后指针都为空的情况，那么就可以种下花朵
       if (prev == 0 && next == 0) {
         cnt++;
         flowerbed[i] = 1;

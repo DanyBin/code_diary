@@ -22,8 +22,9 @@ public class Code_61_FindLongestChain {
     for (int i = 1; i <= pairs.length; i++) {
       //注意遍历当前元素之前的元素
       for (int j = 0; j < i;j ++) {
-        //判断条件
+        //判断条件 - 比较当前元素 与 之前的元素的
         if (pairs[i][1] < pairs[j][1]) {
+          //计算前一个变量 + 当前变量的 最大值
           dp[i] = Math.max(dp[i],dp[i] + 1);
         }
       }

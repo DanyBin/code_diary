@@ -1,5 +1,4 @@
 import java.util.List;
-
 /**
  * Input:
  * s = "abpcplea", d = ["ale","apple","monkey","plea"]
@@ -17,33 +16,33 @@ public class Code_07_FindLongestWord {
   }
 
   public static String findLongestWord(String s, List<String> list) {
-
-    String tmp = "";
-    for (String target : list) {
-      //对比长度
-      final int length = tmp.length();
-      final int length1 = target.length();
-      if (length > length1 || (length == length1 && tmp.compareTo(target) < 0)) {
-        continue;
+      String tmp = "";
+      for (String target : list) {
+        int l = tmp.length();
+        int h = target.length();
+        if (l > h || (l == h && tmp.compareTo(target) < 0)) {
+          continue;
+        }
+        if (isSubstr(tmp,target)) {
+          tmp = target;
+        }
       }
-      if (isSubstr(s,target)) {
-        tmp = target;
-      }
-    }
-    return tmp;
+      return tmp;
   }
 
   public static boolean isSubstr(String s,String target) {
-    int i = 0;
-    int j = 0;
-    while (i < s.length() && j < target.length()) {
-      //字符相等时
-      if (s.charAt(i) == target.charAt(j)) {
-        j ++;
-      }
-      i ++;
-    }
-    //是否相等
-    return j == target.length();
+     int i = 0;
+     int j = 0;
+     while ( i < s.length() && j < target.length()) {
+       //字符相等时
+       if (s.charAt(i) == target.charAt(j)) {
+         j ++;
+       }
+       i++;
+     }
+     return i == target.length();
   }
+
+
+
 }
